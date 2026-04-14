@@ -13,12 +13,12 @@
   --bg:     #060810;
   --bg2:    #0a0d18;
   --bg3:    #10152a;
-  --card:   #0d1022;
-  --border: rgba(255,255,255,0.06);
+ --card: #11152b;
+ --border: rgba(255,255,255,0.12);
   --border2:rgba(255,255,255,0.12);
   --text:   #eef2ff;
-  --muted:  #6b7a99;
-  --muted2: #2d3552;
+  --muted: #9aa6c5;
+ --muted2: #5c6b8a;
   --green:  #10b981;
   --blue:   #6366f1;
   --amber:  #f59e0b;
@@ -123,7 +123,7 @@ section{position:relative;z-index:1}
   font-size:clamp(2rem,3.8vw,3rem);font-weight:800;
   letter-spacing:-.035em;line-height:1.08;margin-bottom:3.5rem;
 }
-.s-title span{color:var(--green)}
+  .s-title span{color:#22c55e}
 /* ── BTN ── */
 .btn{
   display:inline-flex;align-items:center;gap:.4rem;
@@ -239,7 +239,7 @@ section{position:relative;z-index:1}
 @keyframes blink{50%{opacity:0}}
 
 .h-desc{
-  font-size:.93rem;color:var(--muted);
+  font-size:.93rem;  color:#cbd5ff;
   max-width:490px;line-height:1.85;margin-bottom:2.5rem;font-weight:400;
 }
 
@@ -337,7 +337,9 @@ section{position:relative;z-index:1}
 .tag{
   font-family:'JetBrains Mono',monospace;font-size:.61rem;
   padding:.2rem .52rem;border-radius:4px;
-  background:var(--bg3);color:var(--muted);border:1px solid var(--border);
+  background:#1a2040;
+  color:#dbe4ff;
+  border:1px solid rgba(255,255,255,0.1);
   transition:all .14s;cursor:default;
 }
 .tag:hover{background:var(--green);color:#000;border-color:var(--green)}
@@ -434,12 +436,20 @@ section{position:relative;z-index:1}
   font-family:'Outfit',sans-serif;
   font-size:1.08rem;font-weight:800;letter-spacing:-.02em;
 }
-.pj-desc{font-size:.83rem;color:var(--muted);line-height:1.75;flex:1}
+  .pj-desc{
+  font-size:.88rem;
+  color:#cfd8ff;
+  line-height:1.8;
+  flex:1;
+}
 .pj-stack{display:flex;flex-wrap:wrap;gap:.25rem}
 .ptag{
   font-family:'JetBrains Mono',monospace;font-size:.59rem;
   padding:.15rem .48rem;border-radius:3px;
-  background:var(--bg3);color:var(--muted);border:1px solid var(--border);
+
+   background:#1a2040;
+  color:#e0e7ff;
+  border:1px solid rgba(255,255,255,0.1);
 }
 .pj-out{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:auto}
 .ppill{
@@ -504,8 +514,11 @@ section{position:relative;z-index:1}
   font-family:'JetBrains Mono',monospace;
   font-size:.58rem;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:1px;
 }
-.clink-v{font-size:.83rem;font-weight:600}
-
+ .clink-v{
+  font-size:.88rem;
+  font-weight:600;
+  color:#e6ecff;
+}
 /* ── FOOTER ── */
 footer{
   padding:1.75rem;text-align:center;border-top:1px solid var(--border);
