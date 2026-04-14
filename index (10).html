@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shubham Kourav — Senior SDET & Test Automation Engineer</title>
+<meta name="description" content="Senior SDET · 5 years · Selenium · Playwright · RestAssured · UiPath RPA · ISTQB CTAL-TAE"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ── TOKENS ── */
+:root {
+  --bg:     #060810;
+  --bg2:    #0a0d18;
+  --bg3:    #10152a;
+  --card:   #0d1022;
+  --border: rgba(255,255,255,0.06);
+  --border2:rgba(255,255,255,0.12);
+  --text:   #eef2ff;
+  --muted:  #6b7a99;
+  --muted2: #2d3552;
+  --green:  #10b981;
+  --blue:   #6366f1;
+  --amber:  #f59e0b;
+  --rose:   #f43f5e;
+  --gg: rgba(16,185,129,0.1);
+  --shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+[data-theme="light"] {
+  --bg:     #f0f2ff;
+  --bg2:    #e8ecff;
+  --bg3:    #dde3ff;
+  --card:   #ffffff;
+  --border: rgba(30,40,120,0.08);
+  --border2:rgba(30,40,120,0.16);
+  --text:   #0f1133;
+  --muted:  #4a5580;
+  --muted2: #b0badd;
+  --green:  #059669;
+  --blue:   #4f46e5;
+  --amber:  #d97706;
+  --rose:   #e11d48;
+  --gg: rgba(5,150,105,0.07);
+  --shadow: 0 8px 32px rgba(15,20,80,0.12);
+}
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--bg);color:var(--text);
+  line-height:1.6;overflow-x:hidden;
+  transition:background .4s,color .4s;
+  -webkit-font-smoothing:antialiased;
+}
+/* ── CANVAS ── */
+#cv{position:fixed;inset:0;z-index:0;pointer-events:none}
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(1.5rem,5vw,4rem);height:60px;
+  background:rgba(6,8,16,.85);
+  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+  border-bottom:1px solid var(--border);transition:background .4s;
+}
+[data-theme="light"] nav{background:rgba(240,242,255,.9)}
+.nav-logo{
+  font-family:'Outfit',sans-serif;
+  font-size:1.05rem;font-weight:700;letter-spacing:-.02em;color:var(--text);
+}
+.nav-logo b{color:var(--green)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.7rem;font-weight:400;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--muted);
+  text-decoration:none;transition:color .2s;
+}
+.nav-links a:hover,.nav-links a.act{color:var(--green)}
+.nav-r{display:flex;gap:.6rem;align-items:center}
+.tbtn{
+  width:36px;height:36px;border-radius:50%;cursor:pointer;
+  background:var(--bg3);border:1px solid var(--border2);
+  color:var(--muted);font-size:.85rem;
+  display:flex;align-items:center;justify-content:center;transition:all .2s;
+}
+.tbtn:hover{border-color:var(--green);color:var(--green)}
+.hbtn{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:4px}
+.hbtn span{display:block;width:19px;height:1.5px;background:var(--muted);border-radius:2px;transition:.3s}
+.mmenu{
+  display:none;position:fixed;top:60px;left:0;right:0;
+  background:var(--bg2);border-bottom:1px solid var(--border);
+  z-index:99;padding:1.25rem 2rem;flex-direction:column;gap:.2rem;
+}
+.mmenu.open{display:flex}
+.mmenu a{
+  color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:500;
+  font-family:'JetBrains Mono',monospace;
+  letter-spacing:.07em;text-transform:uppercase;padding:.55rem 0;
+  border-bottom:1px solid var(--border);transition:color .2s;
+}
+.mmenu a:last-child{border-bottom:none}
+.mmenu a:hover{color:var(--green)}
+/* ── LAYOUT ── */
+section{position:relative;z-index:1}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(1.5rem,5vw,4rem)}
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+.rv.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+/* ── SECTION LABEL ── */
+.s-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.68rem;font-weight:400;color:var(--green);
+  letter-spacing:.2em;text-transform:uppercase;
+  margin-bottom:.65rem;display:flex;align-items:center;gap:.6rem;
+}
+.s-label::before{content:'//';color:var(--muted2);font-weight:300}
+/* ── SECTION TITLE ── */
+.s-title{
+  font-family:'Outfit',sans-serif;
+  font-size:clamp(2rem,3.8vw,3rem);font-weight:800;
+  letter-spacing:-.035em;line-height:1.08;margin-bottom:3.5rem;
+}
+.s-title span{color:var(--green)}
+/* ── BTN ── */
+.btn{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.65rem 1.35rem;border-radius:7px;
+  font-family:'Outfit',sans-serif;
+  font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  text-decoration:none;cursor:pointer;border:none;transition:all .22s;
+}
+.btn-g{background:var(--green);color:#000}
+.btn-g:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(16,185,129,.32)}
+.btn-b{background:var(--blue);color:#fff}
+.btn-b:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(99,102,241,.32)}
+.btn-o{background:transparent;color:var(--muted);border:1px solid var(--border2)}
+.btn-o:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+
+/* ═══════════════════════════════════
+   HERO
+═══════════════════════════════════ */
+#hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding-top:80px;padding-bottom:4rem;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 300px;
+  gap:4rem;align-items:center;width:100%;
+}
+
+/* availability pill */
+.h-pill{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--gg);border:1px solid rgba(16,185,129,.22);
+  color:var(--green);padding:.3rem .85rem;border-radius:30px;
+  font-family:'JetBrains Mono',monospace;font-size:.64rem;font-weight:400;
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.6rem;
+}
+.pdot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pls 2s ease-in-out infinite}
+@keyframes pls{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,.5)}50%{box-shadow:0 0 0 6px rgba(16,185,129,0)}}
+
+/* ── BIG NAME ── */
+.hero-name-wrap{
+  overflow:hidden;
+  margin-bottom:1rem;
+  line-height:.92;
+}
+.hero-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(5rem,12vw,10rem);
+  letter-spacing:.01em;
+  line-height:.92;
+  display:block;
+  /* gradient shimmer */
+  background: linear-gradient(
+    100deg,
+    var(--text) 0%,
+    var(--text) 30%,
+    var(--green) 45%,
+    var(--blue) 55%,
+    var(--text) 70%,
+    var(--text) 100%
+  );
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmer 5s linear infinite;
+}
+.hero-name.line2{
+  color:transparent;
+  background: linear-gradient(
+    100deg,
+    var(--green) 0%,
+    var(--blue) 40%,
+    var(--green) 80%
+  );
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  animation:shimmer 4s linear infinite reverse;
+}
+@keyframes shimmer{0%{background-position:0% center}100%{background-position:200% center}}
+
+/* slide-up reveal on load */
+.hero-name-wrap .hero-name{
+  transform:translateY(110%);
+  animation:slideUp .9s cubic-bezier(.16,1,.3,1) forwards, shimmer 5s linear infinite;
+}
+.hero-name-wrap .hero-name.line2{
+  transform:translateY(110%);
+  animation:slideUp .9s .12s cubic-bezier(.16,1,.3,1) forwards, shimmer 4s linear infinite reverse;
+}
+@keyframes slideUp{to{transform:translateY(0)}}
+
+/* ── subheading ── */
+.h-sub{
+  font-family:'Outfit',sans-serif;
+  font-size:clamp(.85rem,1.5vw,1rem);font-weight:500;
+  color:var(--muted);line-height:1.7;margin-bottom:1rem;letter-spacing:.01em;
+}
+.h-sub b{color:var(--blue);font-weight:700}
+
+/* ── typewriter ── */
+.h-tw{
+  font-family:'JetBrains Mono',monospace;
+  font-size:clamp(.75rem,1.2vw,.85rem);color:var(--muted);
+  line-height:1.9;margin-bottom:1.75rem;min-height:2.8rem;font-weight:400;
+}
+.tw-hi{color:var(--amber);font-weight:500}
+.tw-cur{
+  display:inline-block;width:2px;height:.85em;background:var(--green);
+  animation:blink .9s step-end infinite;vertical-align:middle;border-radius:1px;margin-left:1px;
+}
+@keyframes blink{50%{opacity:0}}
+
+.h-desc{
+  font-size:.93rem;color:var(--muted);
+  max-width:490px;line-height:1.85;margin-bottom:2.5rem;font-weight:400;
+}
+
+/* stats */
+.stats{
+  display:flex;flex-wrap:wrap;
+  margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);
+  gap:0;
+}
+.st{
+  display:flex;flex-direction:column;
+  padding-right:2rem;margin-right:2rem;border-right:1px solid var(--border);
+}
+.st:last-child{border-right:none;padding-right:0;margin-right:0}
+.st-n{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.4rem;letter-spacing:.02em;color:var(--green);line-height:1;
+}
+.st-l{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.6rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:.3rem;
+}
+
+/* terminal card */
+.terminal{
+  background:var(--bg2);border:1px solid var(--border2);
+  border-radius:12px;overflow:hidden;
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;
+  box-shadow:var(--shadow);
+}
+.t-bar{
+  display:flex;align-items:center;gap:.5rem;
+  padding:.65rem 1rem;background:var(--bg3);border-bottom:1px solid var(--border);
+}
+.td{width:10px;height:10px;border-radius:50%}
+.t-ttl{margin:0 auto;font-size:.6rem;color:var(--muted2);letter-spacing:.08em}
+.t-body{padding:1.1rem 1.3rem}
+.tl{color:var(--muted);line-height:1.95}
+.tl .k{color:var(--green)}.tl .s{color:#fbbf24}.tl .v{color:var(--blue)}.tl .c{color:var(--muted2)}
+.t-cur{
+  display:inline-block;width:7px;height:.85em;background:var(--green);
+  animation:blink .9s step-end infinite;vertical-align:middle;margin-left:2px;border-radius:1px;
+}
+
+/* ═══════════════════════════════════
+   ABOUT
+═══════════════════════════════════ */
+#about{padding:8rem 0}
+.about-g{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.ab p{font-size:.92rem;color:var(--muted);line-height:1.9;margin-bottom:1.1rem;font-weight:400}
+.ab p strong{color:var(--text);font-weight:600}
+.badge-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.5rem}
+.badge{
+  padding:.28rem .75rem;border-radius:5px;
+  font-family:'JetBrains Mono',monospace;font-size:.63rem;font-weight:400;letter-spacing:.04em;
+  border:1px solid var(--border2);color:var(--muted);transition:all .18s;
+}
+.badge:hover{border-color:var(--green);color:var(--green)}
+.info-col{display:flex;flex-direction:column;gap:.6rem}
+.ir{
+  display:flex;align-items:center;gap:.85rem;padding:.85rem 1.1rem;
+  background:var(--card);border:1px solid var(--border);border-radius:9px;transition:all .2s;
+}
+.ir:hover{border-color:var(--border2);transform:translateX(4px)}
+.ir-ico{
+  width:34px;height:34px;border-radius:8px;background:var(--bg3);
+  border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;
+}
+.ir-l{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.58rem;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px;
+}
+.ir-v{font-size:.86rem;font-weight:600}
+
+/* ═══════════════════════════════════
+   SKILLS
+═══════════════════════════════════ */
+#skills{padding:8rem 0;background:var(--bg2)}
+.sk-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.4rem}
+.skc{
+  background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:1.3rem;transition:all .2s;
+}
+.skc:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.15)}
+.skc-h{display:flex;align-items:center;gap:.55rem;margin-bottom:.8rem}
+.skc-ico{
+  width:28px;height:28px;border-radius:6px;background:var(--bg3);
+  border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.82rem;
+}
+.skc-l{
+  font-family:'JetBrains Mono',monospace;font-size:.6rem;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--blue);
+}
+.tags{display:flex;flex-wrap:wrap;gap:.28rem}
+.tag{
+  font-family:'JetBrains Mono',monospace;font-size:.61rem;
+  padding:.2rem .52rem;border-radius:4px;
+  background:var(--bg3);color:var(--muted);border:1px solid var(--border);
+  transition:all .14s;cursor:default;
+}
+.tag:hover{background:var(--green);color:#000;border-color:var(--green)}
+.prof{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.75rem}
+.prof-h{
+  font-family:'JetBrains Mono',monospace;font-size:.62rem;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:1.4rem;
+}
+.bars{display:flex;flex-direction:column;gap:.8rem}
+.bm{display:flex;justify-content:space-between;margin-bottom:.3rem}
+.bn{font-size:.82rem;font-weight:500;color:var(--text)}
+.bp{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--green)}
+.bt{height:3px;background:var(--bg3);border-radius:2px;overflow:hidden}
+.bf{
+  height:100%;border-radius:2px;width:0%;
+  background:linear-gradient(90deg,var(--green),var(--blue));
+  transition:width 1.4s cubic-bezier(.16,1,.3,1);
+}
+
+/* ═══════════════════════════════════
+   EXPERIENCE
+═══════════════════════════════════ */
+#experience{padding:8rem 0}
+.tl{position:relative;padding-left:1.5rem}
+.tl::before{
+  content:'';position:absolute;left:0;top:6px;bottom:0;width:1px;
+  background:linear-gradient(180deg,var(--green),var(--blue) 55%,transparent);
+}
+.ti{position:relative;margin-bottom:3.2rem}
+.ti:last-child{margin-bottom:0}
+.ti-dot{
+  position:absolute;left:-1.5rem;top:5px;width:9px;height:9px;border-radius:50%;
+  background:var(--green);border:2px solid var(--bg);box-shadow:0 0 0 3px var(--gg);transform:translateX(-4px);
+}
+.ti-date{font-family:'JetBrains Mono',monospace;font-size:.64rem;color:var(--green);letter-spacing:.1em;margin-bottom:.4rem}
+.ti-role{
+  font-family:'Outfit',sans-serif;
+  font-size:1.25rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.28rem;
+}
+.ti-co{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--muted);margin-bottom:1.1rem}
+.ti-badge{
+  font-family:'JetBrains Mono',monospace;font-size:.58rem;
+  padding:1px 7px;border-radius:4px;letter-spacing:.06em;
+  background:var(--gg);color:var(--green);border:1px solid rgba(16,185,129,.25);
+}
+.ti-list{list-style:none;display:flex;flex-direction:column;gap:.48rem}
+.ti-list li{
+  font-size:.86rem;color:var(--muted);line-height:1.75;padding-left:1rem;position:relative;
+}
+.ti-list li::before{content:'›';position:absolute;left:0;color:var(--green);font-size:.9rem;top:0;font-weight:700}
+.ti-list li strong{color:var(--blue);font-weight:600}
+
+/* ═══════════════════════════════════
+   PROJECTS
+═══════════════════════════════════ */
+#projects{padding:8rem 0;background:var(--bg2)}
+.pj-g{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+.pj{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:1.8rem;display:flex;flex-direction:column;gap:.85rem;
+  transition:all .25s;position:relative;overflow:hidden;
+}
+.pj::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--green),var(--blue),var(--amber));
+  transform:scaleX(0);transform-origin:left;transition:transform .3s;
+}
+.pj:hover::before{transform:scaleX(1)}
+.pj:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:var(--border2)}
+.pj-top{display:flex;justify-content:space-between;align-items:flex-start}
+.pj-ico{
+  width:40px;height:40px;border-radius:9px;background:var(--bg3);
+  border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+}
+.pj-arr{color:var(--muted2);transition:all .2s;font-size:.9rem}
+.pj:hover .pj-arr{color:var(--green);transform:translate(2px,-2px)}
+.pj-title{
+  font-family:'Outfit',sans-serif;
+  font-size:1.08rem;font-weight:800;letter-spacing:-.02em;
+}
+.pj-desc{font-size:.83rem;color:var(--muted);line-height:1.75;flex:1}
+.pj-stack{display:flex;flex-wrap:wrap;gap:.25rem}
+.ptag{
+  font-family:'JetBrains Mono',monospace;font-size:.59rem;
+  padding:.15rem .48rem;border-radius:3px;
+  background:var(--bg3);color:var(--muted);border:1px solid var(--border);
+}
+.pj-out{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:auto}
+.ppill{
+  font-family:'JetBrains Mono',monospace;font-size:.62rem;font-weight:500;
+  padding:.18rem .6rem;border-radius:20px;
+  background:var(--gg);color:var(--green);border:1px solid rgba(16,185,129,.2);
+}
+
+/* ═══════════════════════════════════
+   CERTIFICATIONS
+═══════════════════════════════════ */
+#certifications{padding:8rem 0}
+.cert-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.cc{
+  background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:1.3rem;display:flex;flex-direction:column;gap:.55rem;transition:all .2s;
+}
+.cc:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.14)}
+.cc-ico{
+  width:34px;height:34px;border-radius:8px;background:var(--bg3);
+  border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.95rem;
+}
+.cc-name{
+  font-family:'Outfit',sans-serif;
+  font-size:.88rem;font-weight:700;line-height:1.3;
+}
+.cc-iss{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted2);letter-spacing:.04em}
+.cb{
+  display:inline-block;font-size:.57rem;font-weight:700;
+  padding:.13rem .5rem;border-radius:3px;text-transform:uppercase;
+  letter-spacing:.1em;align-self:flex-start;
+}
+.cb-a{background:rgba(245,158,11,.1);color:var(--amber);border:1px solid rgba(245,158,11,.25)}
+.cb-b{background:rgba(99,102,241,.1);color:var(--blue);border:1px solid rgba(99,102,241,.25)}
+.cb-g{background:var(--gg);color:var(--green);border:1px solid rgba(16,185,129,.25)}
+
+/* ═══════════════════════════════════
+   CONTACT
+═══════════════════════════════════ */
+#contact{padding:8rem 0;background:var(--bg2)}
+.ct-g{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.ct-title{
+  font-family:'Outfit',sans-serif;
+  font-size:clamp(2rem,3.8vw,3.2rem);font-weight:800;
+  letter-spacing:-.04em;line-height:1.08;margin-bottom:1.1rem;
+}
+.ct-title span{color:var(--green)}
+.ct-p{font-size:.92rem;color:var(--muted);line-height:1.85;margin-bottom:2rem;max-width:380px}
+.ct-links{display:flex;flex-direction:column;gap:.55rem}
+.clink{
+  display:flex;align-items:center;gap:.85rem;padding:.82rem 1rem;
+  background:var(--card);border:1px solid var(--border);border-radius:9px;
+  text-decoration:none;color:var(--text);transition:all .2s;
+}
+.clink:hover{border-color:var(--border2);color:var(--green);transform:translateX(4px)}
+.clink-ico{
+  width:32px;height:32px;border-radius:7px;background:var(--bg3);
+  border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;
+}
+.clink:hover .clink-ico{border-color:var(--green)}
+.clink-l{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.58rem;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:1px;
+}
+.clink-v{font-size:.83rem;font-weight:600}
+
+/* ── FOOTER ── */
+footer{
+  padding:1.75rem;text-align:center;border-top:1px solid var(--border);
+  font-family:'JetBrains Mono',monospace;font-size:.63rem;color:var(--muted2);
+  position:relative;z-index:1;letter-spacing:.06em;
+}
+footer span{color:var(--green)}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:var(--green)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:920px){
+  .hero-grid{grid-template-columns:1fr}
+  .terminal{display:none}
+  .about-g,.ct-g{grid-template-columns:1fr;gap:3rem}
+  .nav-links{display:none}
+  .hbtn{display:flex}
+}
+@media(max-width:700px){
+  .sk-g{grid-template-columns:repeat(2,1fr)}
+  .pj-g{grid-template-columns:1fr}
+  .cert-g{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:480px){
+  .sk-g{grid-template-columns:1fr}
+  .cert-g{grid-template-columns:1fr}
+  .stats{flex-direction:column;gap:1.4rem}
+  .st{border-right:none;border-bottom:1px solid var(--border);padding-right:0;margin-right:0;padding-bottom:1.1rem}
+  .st:last-child{border-bottom:none;padding-bottom:0}
+  .hero-name{font-size:clamp(4rem,20vw,6rem)}
+}
+</style>
+</head>
+<body>
+<canvas id="cv"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Shubham Kourav<b>.</b></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-r">
+    <button class="tbtn" id="themeBtn">🌙</button>
+    <button class="hbtn" id="hbtn"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mm">
+  <a href="#about"          onclick="cm()">About</a>
+  <a href="#skills"         onclick="cm()">Skills</a>
+  <a href="#experience"     onclick="cm()">Experience</a>
+  <a href="#projects"       onclick="cm()">Projects</a>
+  <a href="#certifications" onclick="cm()">Certifications</a>
+  <a href="#contact"        onclick="cm()">Contact</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+<div class="wrap">
+<div class="hero-grid">
+  <div>
+    <div class="h-pill"><span class="pdot"></span>Open to Senior SDET Roles</div>
+
+    <!-- BIG ANIMATED NAME -->
+    <div class="hero-name-wrap">
+      <span class="hero-name">SHUBHAM</span>
+    </div>
+    <div class="hero-name-wrap">
+      <span class="hero-name line2">KOURAV</span>
+    </div>
+
+    <div class="h-sub" style="margin-top:.9rem">
+      <b>Senior SDET</b> · Test Automation Engineer<br/>
+      ISTQB CTAL-TAE · UiPath RPA Developer
+    </div>
+
+    <div class="h-tw" id="tw"></div>
+
+    <p class="h-desc">
+      Building bulletproof automation frameworks that reduce production defects and accelerate release cycles.
+      5 years delivering end-to-end QA solutions for global platforms across 10+ countries.
+    </p>
+
+    <div style="display:flex;gap:.7rem;flex-wrap:wrap">
+      <a href="ShubhamKourav_SDET_5Years.pdf" download class="btn btn-g">⬇ Resume PDF</a>
+      <a href="ShubhamKourav_SDET_5Years.pdf" target="_blank" class="btn btn-b">👁 View Resume</a>
+      <a href="https://linkedin.com/in/qashubham" target="_blank" rel="noopener" class="btn btn-o">LinkedIn ↗</a>
+    </div>
+
+    <div class="stats">
+      <div class="st"><span class="st-n" data-c="500" data-s="+">0</span><span class="st-l">Test Cases</span></div>
+      <div class="st"><span class="st-n" data-c="90"  data-s="%">0</span><span class="st-l">Coverage</span></div>
+      <div class="st"><span class="st-n" data-c="40"  data-s="%">0</span><span class="st-l">Faster Releases</span></div>
+      <div class="st"><span class="st-n" data-c="75"  data-s="h+">0</span><span class="st-l">Saved/Month</span></div>
+      <div class="st"><span class="st-n" data-c="5"   data-s=" yrs">0</span><span class="st-l">Experience</span></div>
+    </div>
+  </div>
+
+  <!-- TERMINAL -->
+  <div class="terminal">
+    <div class="t-bar">
+      <div class="td" style="background:#ff5f57"></div>
+      <div class="td" style="background:#febc2e"></div>
+      <div class="td" style="background:#28c840"></div>
+      <span class="t-ttl">engineer.js</span>
+    </div>
+    <div class="t-body">
+      <div class="tl"><span class="k">const</span> engineer = {</div>
+      <div class="tl">&nbsp;&nbsp;name: <span class="s">"Shubham Kourav"</span>,</div>
+      <div class="tl">&nbsp;&nbsp;role: <span class="s">"Senior SDET"</span>,</div>
+      <div class="tl">&nbsp;&nbsp;exp: <span class="v">5</span>, <span class="c">// years</span></div>
+      <div class="tl">&nbsp;&nbsp;cert: <span class="s">"ISTQB CTAL-TAE"</span>,</div>
+      <div class="tl">&nbsp;&nbsp;stack: [<span class="s">"Selenium"</span>, <span class="s">"Playwright"</span>,</div>
+      <div class="tl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="s">"RestAssured"</span>, <span class="s">"UiPath"</span>],</div>
+      <div class="tl">&nbsp;&nbsp;openToWork: <span class="v">true</span></div>
+      <div class="tl">};</div>
+      <div class="tl" style="margin-top:.7rem"><span class="k">></span> engineer.hire()<span class="t-cur"></span></div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about">
+<div class="wrap">
+  <div class="s-label rv">About Me</div>
+  <h2 class="s-title rv">Who I <span>Am</span></h2>
+  <div class="about-g">
+    <div class="ab rv">
+      <p>I'm a <strong>Test Automation Engineer with 5 years of expertise</strong> embedded with <strong>VIOOH</strong> — a global Out-of-Home advertising platform running programmatic digital billboard campaigns across <strong>10 countries</strong>.</p>
+      <p>I specialize in building <strong>scalable automation frameworks</strong> from scratch using Selenium WebDriver, Playwright, and BDD Cucumber, integrated into CI/CD pipelines delivering same-day regression feedback.</p>
+      <p>Beyond UI automation, I've architected <strong>100+ UiPath RPA workflows</strong> for finance and back-office operations, saving <strong>75+ hours per month</strong>. I also build internal QA dashboards with Retool and JavaScript for live API monitoring.</p>
+      <p>Currently seeking <strong>Senior SDET / Test Automation Lead</strong> roles — PAN India or Remote. Notice period ends <strong>June 10, 2026</strong>.</p>
+      <div class="badge-row">
+        <span class="badge">Agile / Scrum</span><span class="badge">BDD / TDD</span>
+        <span class="badge">CI/CD</span><span class="badge">API Automation</span>
+        <span class="badge">RPA</span><span class="badge">Gen-AI Testing</span>
+        <span class="badge">Cross-browser</span><span class="badge">Microservices</span>
+      </div>
+    </div>
+    <div class="info-col rv">
+      <div class="ir"><div class="ir-ico">🏢</div><div><div class="ir-l">Employer</div><div class="ir-v">Rishabh Software Pvt. Ltd.</div></div></div>
+      <div class="ir"><div class="ir-ico">🎯</div><div><div class="ir-l">Client / Domain</div><div class="ir-v">VIOOH — Global OOH Advertising</div></div></div>
+      <div class="ir"><div class="ir-ico">📍</div><div><div class="ir-l">Location</div><div class="ir-v">Vadodara, Gujarat · Open to Relocation</div></div></div>
+      <div class="ir"><div class="ir-ico">📧</div><div><div class="ir-l">Email</div><div class="ir-v">sk8982976179@gmail.com</div></div></div>
+      <div class="ir"><div class="ir-ico">📱</div><div><div class="ir-l">Phone / WhatsApp</div><div class="ir-v">+91-8982976179</div></div></div>
+      <div class="ir"><div class="ir-ico">🎓</div><div><div class="ir-l">Education</div><div class="ir-v">BCA, Computer Science — RNTU Bhopal</div></div></div>
+      <div class="ir"><div class="ir-ico">📅</div><div><div class="ir-l">Notice Period</div><div class="ir-v">Serving · Last Day June 10, 2026</div></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ SKILLS ═══ -->
+<section id="skills">
+<div class="wrap">
+  <div class="s-label rv">Skills</div>
+  <h2 class="s-title rv">Core <span>Stack</span></h2>
+  <div class="sk-g">
+    <div class="skc rv d1"><div class="skc-h"><div class="skc-ico">🤖</div><div class="skc-l">Test Automation</div></div><div class="tags"><span class="tag">Selenium WebDriver</span><span class="tag">Playwright</span><span class="tag">TestNG</span><span class="tag">JUnit</span><span class="tag">BDD Cucumber</span><span class="tag">Page Object Model</span><span class="tag">Data-Driven</span></div></div>
+    <div class="skc rv d2"><div class="skc-h"><div class="skc-ico">🔌</div><div class="skc-l">API Testing</div></div><div class="tags"><span class="tag">RestAssured Java</span><span class="tag">Postman</span><span class="tag">REST APIs</span><span class="tag">API Automation</span><span class="tag">JSON / XML</span><span class="tag">OAuth / JWT</span></div></div>
+    <div class="skc rv d3"><div class="skc-h"><div class="skc-ico">⚙️</div><div class="skc-l">RPA</div></div><div class="tags"><span class="tag">UiPath Studio</span><span class="tag">UiPath Orchestrator</span><span class="tag">Bot Development</span><span class="tag">ERP Integration</span><span class="tag">Exception Handling</span></div></div>
+    <div class="skc rv d1"><div class="skc-h"><div class="skc-ico">🚀</div><div class="skc-l">CI/CD & DevOps</div></div><div class="tags"><span class="tag">Jenkins</span><span class="tag">GitHub Actions</span><span class="tag">CodeFresh</span><span class="tag">Maven</span><span class="tag">Gradle</span><span class="tag">Git</span></div></div>
+    <div class="skc rv d2"><div class="skc-h"><div class="skc-ico">💻</div><div class="skc-l">Languages & DB</div></div><div class="tags"><span class="tag">Core Java</span><span class="tag">JavaScript</span><span class="tag">MySQL</span><span class="tag">SQL Server</span><span class="tag">Oracle</span></div></div>
+    <div class="skc rv d3"><div class="skc-h"><div class="skc-ico">🛠️</div><div class="skc-l">Tools</div></div><div class="tags"><span class="tag">JIRA</span><span class="tag">Retool</span><span class="tag">JMeter</span><span class="tag">Extent Reports</span><span class="tag">Allure</span><span class="tag">GitHub</span></div></div>
+  </div>
+  <div class="prof rv">
+    <div class="prof-h">// Proficiency Levels</div>
+    <div class="bars">
+      <div><div class="bm"><span class="bn">Selenium + Java + BDD Cucumber</span><span class="bp">95%</span></div><div class="bt"><div class="bf" data-w="95"></div></div></div>
+      <div><div class="bm"><span class="bn">RestAssured API Automation</span><span class="bp">90%</span></div><div class="bt"><div class="bf" data-w="90"></div></div></div>
+      <div><div class="bm"><span class="bn">Core Java</span><span class="bp">87%</span></div><div class="bt"><div class="bf" data-w="87"></div></div></div>
+      <div><div class="bm"><span class="bn">UiPath RPA</span><span class="bp">88%</span></div><div class="bt"><div class="bf" data-w="88"></div></div></div>
+      <div><div class="bm"><span class="bn">Playwright</span><span class="bp">82%</span></div><div class="bt"><div class="bf" data-w="82"></div></div></div>
+      <div><div class="bm"><span class="bn">Jenkins / GitHub Actions CI/CD</span><span class="bp">85%</span></div><div class="bt"><div class="bf" data-w="85"></div></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ EXPERIENCE ═══ -->
+<section id="experience">
+<div class="wrap">
+  <div class="s-label rv">Experience</div>
+  <h2 class="s-title rv">Work <span>History</span></h2>
+  <div class="tl">
+    <div class="ti rv">
+      <div class="ti-dot"></div>
+      <div class="ti-date">Dec 2023 — Present · 2+ years</div>
+      <div class="ti-role">Senior Test Automation Engineer</div>
+      <div class="ti-co">Rishabh Software Pvt. Ltd.<span class="ti-badge">Client: VIOOH</span></div>
+      <ul class="ti-list">
+        <li>Managed concurrent testing across <strong>3 Agile squads and 10+ microservices</strong>, prioritizing regression, integration, and exploratory testing around release cycles.</li>
+        <li>Architected a <strong>500+ test case Selenium/Java BDD Cucumber suite</strong> with 90% regression coverage for VIOOH campaign delivery and inventory booking platforms.</li>
+        <li>Integrated full suite into <strong>Jenkins, CodeFresh & GitHub Actions CI/CD</strong>, cutting release cycle time by 40% with same-day regression feedback.</li>
+        <li>Led strategic migration of legacy Selenium suites to <strong>Playwright</strong>, improving execution speed by 35% and enabling cross-browser parallel runs on complex bidding flows.</li>
+        <li>Led code reviews for a 5-member QA team, enforcing stable locator strategies and retry mechanisms to significantly reduce test flakiness.</li>
+        <li>Leveraged <strong>Generative AI</strong> to accelerate Playwright script generation and synthetic test data creation.</li>
+      </ul>
+    </div>
+    <div class="ti rv">
+      <div class="ti-dot"></div>
+      <div class="ti-date">Mar 2022 — Dec 2023 · 1 yr 10 mos</div>
+      <div class="ti-role">Associate Software Test Engineer</div>
+      <div class="ti-co">Rishabh Software Pvt. Ltd.<span class="ti-badge">Client: VIOOH</span></div>
+      <ul class="ti-list">
+        <li>Designed <strong>RestAssured Java API automation framework</strong> covering auth, campaign creation, bid request/response validation, and negative testing scenarios.</li>
+        <li>Integrated API automation into CI/CD, reducing production API bugs by <strong>30% across 5 quarterly releases</strong>.</li>
+        <li>Built internal QA dashboards with <strong>Retool and JavaScript</strong> for real-time API monitoring and campaign delivery validation.</li>
+        <li>Tracked and resolved <strong>200+ JIRA defects</strong> with zero critical escaped defects in 3 consecutive quarterly releases.</li>
+      </ul>
+    </div>
+    <div class="ti rv">
+      <div class="ti-dot"></div>
+      <div class="ti-date">Mar 2021 — Mar 2022 · 1 year</div>
+      <div class="ti-role">Quality Analyst Trainee</div>
+      <div class="ti-co">Rishabh Software Pvt. Ltd.</div>
+      <ul class="ti-list">
+        <li>Built and maintained <strong>Selenium WebDriver + Java + TestNG</strong> scripts for functional and regression testing cycles.</li>
+        <li>Implemented <strong>Data-Driven Testing</strong> with Extent Reports for stakeholder-ready test reporting.</li>
+        <li>Contributed to framework maintenance, debugging failing tests and improving code quality.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ PROJECTS ═══ -->
+<section id="projects">
+<div class="wrap">
+  <div class="s-label rv">Projects</div>
+  <h2 class="s-title rv">Key <span>Projects</span></h2>
+  <div class="pj-g">
+    <div class="pj rv"><div class="pj-top"><div class="pj-ico">🎯</div><div class="pj-arr">↗</div></div><div class="pj-title">Campaign Automation Test Suite</div><div class="pj-desc">End-to-end automated regression suite for VIOOH campaign creation, inventory booking, and bid management. 500+ test cases covering 10+ microservices with full CI/CD integration.</div><div class="pj-stack"><span class="ptag">Playwright</span><span class="ptag">Selenium</span><span class="ptag">Java</span><span class="ptag">Cucumber BDD</span><span class="ptag">Jenkins</span><span class="ptag">GitHub Actions</span></div><div class="pj-out"><span class="ppill">90% Coverage</span><span class="ppill">40% Faster Releases</span></div></div>
+    <div class="pj rv"><div class="pj-top"><div class="pj-ico">🤖</div><div class="pj-arr">↗</div></div><div class="pj-title">RPA Finance Operations Bot Suite</div><div class="pj-desc">20+ attended and unattended UiPath bots automating invoice processing, campaign delivery reconciliation, and ERP data sync for VIOOH's finance operations team.</div><div class="pj-stack"><span class="ptag">UiPath Studio</span><span class="ptag">Orchestrator</span><span class="ptag">SQL Server</span><span class="ptag">Oracle</span><span class="ptag">REST APIs</span></div><div class="pj-out"><span class="ppill">75h+/Month Saved</span><span class="ppill">60% Less Manual Work</span></div></div>
+    <div class="pj rv"><div class="pj-top"><div class="pj-ico">🔌</div><div class="pj-arr">↗</div></div><div class="pj-title">API Automation Framework</div><div class="pj-desc">RestAssured framework validating VIOOH REST APIs for campaign bidding, audience targeting, and OOH media partner integrations. Fully integrated with CI/CD pipelines.</div><div class="pj-stack"><span class="ptag">RestAssured</span><span class="ptag">Java</span><span class="ptag">Postman</span><span class="ptag">Retool</span><span class="ptag">Jenkins</span></div><div class="pj-out"><span class="ppill">30% Fewer Prod Bugs</span><span class="ppill">5 Quarterly Releases</span></div></div>
+    <div class="pj rv"><div class="pj-top"><div class="pj-ico">📊</div><div class="pj-arr">↗</div></div><div class="pj-title">Real-Time QA Dashboard</div><div class="pj-desc">Internal dashboard built with Retool and JavaScript for live API health checks, test data verification, and campaign delivery validation across 10 OOH markets globally.</div><div class="pj-stack"><span class="ptag">Retool</span><span class="ptag">JavaScript</span><span class="ptag">REST APIs</span><span class="ptag">MySQL</span></div><div class="pj-out"><span class="ppill">10 Countries</span><span class="ppill">Real-Time Monitoring</span></div></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CERTIFICATIONS ═══ -->
+<section id="certifications">
+<div class="wrap">
+  <div class="s-label rv">Certifications</div>
+  <h2 class="s-title rv">Qualifi<span>cations</span></h2>
+  <div class="cert-g">
+    <div class="cc rv d1"><div class="cc-ico">🏆</div><div class="cc-name">ISTQB CTAL-TAE</div><div class="cc-iss">ISTQB</div><span class="cb cb-a">Advanced Level</span></div>
+    <div class="cc rv d2"><div class="cc-ico">✅</div><div class="cc-name">ISTQB CTFL — Foundation Level</div><div class="cc-iss">ISTQB</div><span class="cb cb-b">Foundation</span></div>
+    <div class="cc rv d3"><div class="cc-ico">⚙️</div><div class="cc-name">UiPath RPA Developer Foundation</div><div class="cc-iss">UiPath · v2020.10</div><span class="cb cb-g">Developer</span></div>
+    <div class="cc rv d1"><div class="cc-ico">🧠</div><div class="cc-name">Google AI Professional Certificate</div><div class="cc-iss">Google</div><span class="cb cb-b">Professional</span></div>
+    <div class="cc rv d2"><div class="cc-ico">🎓</div><div class="cc-name">Software Testing & Automation</div><div class="cc-iss">University of Minnesota</div><span class="cb cb-b">Academic</span></div>
+    <div class="cc rv d3"><div class="cc-ico">☁️</div><div class="cc-name">Cloud Computing: Core Concepts</div><div class="cc-iss">LinkedIn Learning</div><span class="cb cb-g">Cloud</span></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+<div class="wrap">
+  <div class="ct-g">
+    <div class="rv">
+      <div class="s-label" style="margin-bottom:.6rem">Contact</div>
+      <div class="h-pill" style="margin-bottom:1.5rem"><span class="pdot"></span>Open to Opportunities</div>
+      <h2 class="ct-title">Let's Build<br/><span>Something</span><br/>Great</h2>
+      <p class="ct-p">Actively exploring Senior SDET and Test Automation Lead roles — PAN India and remote. Notice period serving, last day June 10, 2026.</p>
+      <a href="mailto:sk8982976179@gmail.com?subject=Opportunity — Senior SDET Role" class="btn btn-g">✉ Send Email</a>
+    </div>
+    <div class="ct-links rv">
+      <a href="mailto:sk8982976179@gmail.com" class="clink"><div class="clink-ico">✉</div><div><span class="clink-l">Email</span><span class="clink-v">sk8982976179@gmail.com</span></div></a>
+      <a href="ShubhamKourav_SDET_5Years.pdf" download class="clink"><div class="clink-ico">📄</div><div><span class="clink-l">Resume</span><span class="clink-v">Download PDF</span></div></a>
+      <a href="tel:+918982976179" class="clink"><div class="clink-ico">📱</div><div><span class="clink-l">Phone</span><span class="clink-v">+91-8982976179</span></div></a>
+      <a href="https://wa.me/918982976179" target="_blank" rel="noopener" class="clink"><div class="clink-ico">💬</div><div><span class="clink-l">WhatsApp</span><span class="clink-v">Chat Instantly</span></div></a>
+      <a href="https://linkedin.com/in/qashubham" target="_blank" rel="noopener" class="clink"><div class="clink-ico">💼</div><div><span class="clink-l">LinkedIn</span><span class="clink-v">linkedin.com/in/qashubham</span></div></a>
+      <a href="https://hiringqa.in" target="_blank" rel="noopener" class="clink"><div class="clink-ico">🌐</div><div><span class="clink-l">QA Hub</span><span class="clink-v">hiringqa.in</span></div></a>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer>
+  <p>Shubham Kourav · Senior SDET · Vadodara, India · <span>sk8982976179@gmail.com</span> · April 2026</p>
+</footer>
+
+<script>
+const html = document.documentElement;
+
+/* ── THEME ── */
+const tb = document.getElementById('themeBtn');
+tb.addEventListener('click', () => {
+  const n = html.dataset.theme === 'dark' ? 'light' : 'dark';
+  html.dataset.theme = n;
+  tb.textContent = n === 'dark' ? '🌙' : '☀️';
+});
+
+/* ── MOBILE NAV ── */
+document.getElementById('hbtn').addEventListener('click', () =>
+  document.getElementById('mm').classList.toggle('open'));
+function cm(){ document.getElementById('mm').classList.remove('open') }
+
+/* ── TYPEWRITER ── */
+(function(){
+  const lines = [
+    { pre:'$ role  → ', txt:'Senior SDET · Test Automation Engineer' },
+    { pre:'$ cert  → ', txt:'ISTQB CTAL-TAE · UiPath RPA Developer' },
+    { pre:'$ stack → ', txt:'Selenium · Playwright · RestAssured · CI/CD' },
+  ];
+  const el = document.getElementById('tw');
+  let phase = 0;
+
+  function render(pre, typed){
+    el.innerHTML = `<span style="color:var(--muted2)">${pre}</span><span class="tw-hi">${typed}</span><span class="tw-cur"></span>`;
+  }
+
+  function type(li, done){
+    const {pre,txt} = lines[li]; let i=0;
+    (function go(){
+      render(pre, txt.slice(0,i));
+      if(i++<=txt.length) setTimeout(go, 44+Math.random()*24);
+      else setTimeout(()=>erase(li,txt,done), 2200);
+    })();
+  }
+
+  function erase(li, txt, done){
+    const pre=lines[li].pre; let len=txt.length;
+    (function go(){
+      render(pre, txt.slice(0,len));
+      if(len-->0) setTimeout(go, 18);
+      else { phase=(phase+1)%lines.length; setTimeout(done,320); }
+    })();
+  }
+
+  function cycle(){ type(phase, cycle) }
+  cycle();
+})();
+
+/* ── MULTICOLOR PARTICLE NETWORK ── */
+(function(){
+  const cv  = document.getElementById('cv');
+  const ctx = cv.getContext('2d');
+  let W, H, ps = [];
+  let mx = null, my = null;
+  const N = 80;
+
+  // Color palettes per theme
+  const DARK_COLS  = ['#10b981','#6366f1','#f59e0b','#f43f5e','#38bdf8'];
+  const LIGHT_COLS = ['#059669','#4f46e5','#d97706','#e11d48','#0284c7'];
+
+  function getCols(){ return html.dataset.theme==='dark' ? DARK_COLS : LIGHT_COLS; }
+
+  function resize(){ W = cv.width = innerWidth; H = cv.height = innerHeight; }
+  resize();
+  addEventListener('resize', resize);
+
+  /* hex → rgb array */
+  function hexRGB(h){
+    const n=parseInt(h.slice(1),16);
+    return [(n>>16)&255,(n>>8)&255,n&255];
+  }
+  /* lerp two rgb arrays */
+  function lerpRGB(a,b,t){
+    return [
+      Math.round(a[0]+(b[0]-a[0])*t),
+      Math.round(a[1]+(b[1]-a[1])*t),
+      Math.round(a[2]+(b[2]-a[2])*t),
+    ];
+  }
+
+  class P {
+    constructor(){
+      this.colorIdx = Math.floor(Math.random()*DARK_COLS.length);
+      this.reset();
+    }
+    reset(){
+      this.x  = Math.random()*W;
+      this.y  = Math.random()*H;
+      this.vx = (Math.random()-.5)*.5;
+      this.vy = (Math.random()-.5)*.5;
+      this.r  = Math.random()*1.8+.6;
+      this.a  = Math.random()*.55+.2;
+    }
+    color(){ return getCols()[this.colorIdx]; }
+    update(){
+      if(mx!==null){
+        const dx=mx-this.x, dy=my-this.y, d=Math.hypot(dx,dy);
+        if(d<180&&d>6){
+          const f=(180-d)/180 * .55; // more reactive
+          this.vx+=(dx/d)*f*.4;
+          this.vy+=(dy/d)*f*.4;
+        }
+      }
+      this.vx*=.984; this.vy*=.984;
+      this.x+=this.vx; this.y+=this.vy;
+      if(this.x<0||this.x>W) this.vx*=-1;
+      if(this.y<0||this.y>H) this.vy*=-1;
+    }
+    draw(){
+      const rgb = hexRGB(this.color());
+      ctx.beginPath();
+      ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${rgb[0]},${rgb[1]},${rgb[2]},${this.a})`;
+      ctx.fill();
+      // subtle glow
+      ctx.beginPath();
+      ctx.arc(this.x,this.y,this.r*2.5,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${rgb[0]},${rgb[1]},${rgb[2]},0.06)`;
+      ctx.fill();
+    }
+  }
+
+  for(let i=0;i<N;i++) ps.push(new P());
+
+  /* click burst */
+  let lastClick=0;
+  document.addEventListener('click', e=>{
+    if(Date.now()-lastClick<200) return;
+    lastClick=Date.now();
+    for(let i=0;i<14;i++){
+      const p=new P();
+      p.x=e.clientX; p.y=e.clientY;
+      const ang=Math.random()*Math.PI*2, spd=1.5+Math.random()*2.2;
+      p.vx=Math.cos(ang)*spd; p.vy=Math.sin(ang)*spd;
+      ps.push(p);
+    }
+    if(ps.length>200) ps.splice(0, ps.length-200);
+  });
+
+  function drawLines(){
+    const MAX=130;
+    for(let i=0;i<ps.length;i++){
+      for(let j=i+1;j<ps.length;j++){
+        const dx=ps[i].x-ps[j].x, dy=ps[i].y-ps[j].y, d=Math.hypot(dx,dy);
+        if(d<MAX){
+          const t=d/MAX;
+          const ca=hexRGB(ps[i].color());
+          const cb=hexRGB(ps[j].color());
+          const mid=lerpRGB(ca,cb,.5);
+          const alpha=(1-t)*0.22;
+          ctx.beginPath();
+          ctx.moveTo(ps[i].x,ps[i].y);
+          ctx.lineTo(ps[j].x,ps[j].y);
+          ctx.strokeStyle=`rgba(${mid[0]},${mid[1]},${mid[2]},${alpha})`;
+          ctx.lineWidth=.9;
+          ctx.stroke();
+        }
+      }
+
+      // mouse lines — bright white-tinted connection
+      if(mx!==null){
+        const dx=ps[i].x-mx, dy=ps[i].y-my, d=Math.hypot(dx,dy);
+        if(d<160){
+          const rgb=hexRGB(ps[i].color());
+          const a=(1-d/160)*0.5;
+          ctx.beginPath();
+          ctx.moveTo(ps[i].x,ps[i].y);
+          ctx.lineTo(mx,my);
+          ctx.strokeStyle=`rgba(${rgb[0]},${rgb[1]},${rgb[2]},${a})`;
+          ctx.lineWidth=1.1;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function loop(){
+    ctx.clearRect(0,0,W,H);
+    ps.forEach(p=>{ p.update(); p.draw(); });
+    drawLines();
+    requestAnimationFrame(loop);
+  }
+  loop();
+
+  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+  addEventListener('mouseleave',()=>{mx=null;my=null});
+})();
+
+/* ── SCROLL REVEAL ── */
+const ro = new IntersectionObserver(
+  es=>es.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('on') }),
+  {threshold:.08}
+);
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+
+/* ── SKILL BARS ── */
+const bo = new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting) e.target.querySelectorAll('.bf').forEach(f=>f.style.width=f.dataset.w+'%');
+}),{threshold:.25});
+document.querySelectorAll('.bars').forEach(el=>bo.observe(el));
+
+/* ── COUNT-UP ── */
+function countUp(el){
+  const tgt=+el.dataset.c, suf=el.dataset.s||'', dur=1500, s=performance.now();
+  (function f(now){
+    const p=Math.min((now-s)/dur,1),e=1-Math.pow(1-p,3);
+    el.textContent=Math.round(e*tgt)+suf;
+    if(p<1) requestAnimationFrame(f);
+  })(s);
+}
+const co = new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){ e.target.querySelectorAll('[data-c]').forEach(countUp); co.unobserve(e.target); }
+}),{threshold:.4});
+const strip=document.querySelector('.stats');
+if(strip) co.observe(strip);
+
+/* ── ACTIVE NAV ── */
+const secs=document.querySelectorAll('section[id]');
+const nas=document.querySelectorAll('.nav-links a');
+addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{ if(scrollY>=s.offsetTop-90) cur=s.id; });
+  nas.forEach(a=>a.classList.toggle('act',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+</script>
+</body>
+</html>
