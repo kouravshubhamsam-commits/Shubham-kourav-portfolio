@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Shubham Kourav — Senior SDET & Test Automation Engineer</title>
+<title>Shubham Kourav - Senior SDET & Test Automation Engineer</title>
 <meta name="description" content="Senior SDET · 5 years · Selenium · Playwright · RestAssured · UiPath RPA · ISTQB CTAL-TAE"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
@@ -971,16 +971,7 @@ function cm(){ document.getElementById('mm').classList.remove('open') }
   let mx = null, my = null;
 const N = window.innerWidth < 768 ? 30 : 60;
   // Color palettes per theme
-  const DARK_COLS = [
-  '#10b981', // green
-  '#6366f1', // indigo
-  '#f59e0b', // amber
-  '#f43f5e', // rose
-  '#38bdf8', // sky
-  '#a78bfa', // violet
-  '#22d3ee', // cyan
-  '#fb7185', // pink
-];
+  const DARK_COLS  = ['#10b981','#6366f1','#f59e0b','#f43f5e','#38bdf8'];
   const LIGHT_COLS = ['#059669','#4f46e5','#d97706','#e11d48','#0284c7'];
 
   function getCols(){ return html.dataset.theme==='dark' ? DARK_COLS : LIGHT_COLS; }
@@ -1002,104 +993,61 @@ const N = window.innerWidth < 768 ? 30 : 60;
       Math.round(a[2]+(b[2]-a[2])*t),
     ];
   }
-class P {
-  constructor(){
-    this.depth = Math.random(); // 0 = far, 1 = near
-    this.colorIdx = Math.floor(Math.random()*DARK_COLS.length);
-    this.reset();
-  }
 
-  reset(){
-    this.x  = Math.random()*W;
-    this.y  = Math.random()*H;
-
-    // depth-based speed (parallax feel)
-    const speed = this.depth * 0.6 + 0.1;
-
-    this.vx = (Math.random()-.5) * speed;
-    this.vy = (Math.random()-.5) * speed;
-
-    // size based on depth
-    this.r  = this.depth * 2.2 + 0.4;
-
-    // opacity based on depth
-    this.a  = this.depth * 0.6 + 0.1;
-
-    // blur chance
-    this.blur = Math.random() < 0.25;
-  }
-
-  color(){
-    return getCols()[this.colorIdx];
-  }
-
+  class P {
+    constructor(){
+      this.colorIdx = Math.floor(Math.random()*DARK_COLS.length);
+      this.reset();
+    }
+    reset(){
+      this.x  = Math.random()*W;
+      this.y  = Math.random()*H;
+      this.vx = (Math.random()-.5)*.5;
+      this.vy = (Math.random()-.5)*.5;
+      this.r  = Math.random()*1.8+.6;
+      this.a  = Math.random()*.55+.2;
+    }
+    color(){ return getCols()[this.colorIdx]; }
 update(){
-  const t = Date.now() * 0.0003;
+  const t = Date.now() * 0.0003; // time factor
 
-  // subtle floating motion
+  // subtle wave motion (natural float)
   this.vx += Math.sin(t + this.y * 0.01) * 0.002;
   this.vy += Math.cos(t + this.x * 0.01) * 0.002;
 
-  // ✅ MOUSE INTERACTION (depth aware)
-  if(mx !== null){
-    const dx = mx - this.x;
-    const dy = my - this.y;
-    const d  = Math.hypot(dx, dy);
-
-  if(d < 160 && d > 0.001){
-
-  const force = (160 - d) / 160;
-
-  // depth-based strength
-  const strength = force * (this.depth * 1.2 + 0.2);
-
-  // repel when very close, attract otherwise
-  const dir = d < 40 ? -1 : 1;
-
-  this.vx += (dx / d) * strength * 0.4 * dir;
-  this.vy += (dy / d) * strength * 0.4 * dir;
-}
-  }
-
-  // damping (important for smoothness)
-  this.vx *= 0.98;
-  this.vy *= 0.98;
-
-  this.x += this.vx;
-  this.y += this.vy;
-
-  // bounds
-  if(this.x < 0 || this.x > W) this.vx *= -1;
-  if(this.y < 0 || this.y > H) this.vy *= -1;
-}
-
-  draw(){
-    const rgb = hexRGB(this.color());
-
-    // glow (for depth)
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.r * 3, 0, Math.PI*2);
-    ctx.fillStyle = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${this.a * 0.08})`;
-    ctx.fill();
-
-    // main dot
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.r, 0, Math.PI*2);
-
-    // blur effect (depth illusion)
-    if(this.blur){
-      ctx.shadowBlur = 12;
-      ctx.shadowColor = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},0.6)`;
-    } else {
-      ctx.shadowBlur = 0;
+  // existing mouse interaction
+  if(mx!==null){
+    const dx=mx-this.x, dy=my-this.y, d=Math.hypot(dx,dy);
+    if(d<180&&d>6){
+      const f=(180-d)/180 * .55;
+      this.vx+=(dx/d)*f*.4;
+      this.vy+=(dy/d)*f*.4;
     }
-
-    ctx.fillStyle = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${this.a})`;
-    ctx.fill();
-
-    ctx.shadowBlur = 0;
   }
+
+  // smooth damping (important)
+  this.vx*=.98;
+  this.vy*=.98;
+
+  this.x+=this.vx;
+  this.y+=this.vy;
+
+  if(this.x<0||this.x>W) this.vx*=-1;
+  if(this.y<0||this.y>H) this.vy*=-1;
 }
+    draw(){
+      const rgb = hexRGB(this.color());
+      ctx.beginPath();
+      ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${rgb[0]},${rgb[1]},${rgb[2]},${this.a})`;
+      ctx.fill();
+      // subtle glow
+      ctx.beginPath();
+      ctx.arc(this.x,this.y,this.r*2.5,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${rgb[0]},${rgb[1]},${rgb[2]},0.06)`;
+      ctx.fill();
+    }
+  }
 
   for(let i=0;i<N;i++) ps.push(new P());
 
@@ -1118,45 +1066,47 @@ update(){
     if(ps.length>200) ps.splice(0, ps.length-200);
   });
 
-function drawLines(){
-  const MAX = window.innerWidth < 768 ? 90 : 130;
+  function drawLines(){
+    const MAX=130;
+    for(let i=0;i<ps.length;i++){
+      for(let j=i+1;j<ps.length;j++){
+        const dx=ps[i].x-ps[j].x, dy=ps[i].y-ps[j].y, d=Math.hypot(dx,dy);
+        if(d<MAX){
+          const t=d/MAX;
+          const ca=hexRGB(ps[i].color());
+          const cb=hexRGB(ps[j].color());
+          const mid=lerpRGB(ca,cb,.5);
+          const alpha=(1-t)*0.22;
+          ctx.beginPath();
+          ctx.moveTo(ps[i].x,ps[i].y);
+          ctx.lineTo(ps[j].x,ps[j].y);
+          ctx.strokeStyle=`rgba(${mid[0]},${mid[1]},${mid[2]},${alpha})`;
+          ctx.lineWidth=.9;
+          ctx.stroke();
+        }
+      }
 
-  for(let i=0;i<ps.length;i++){
-    for(let j=i+1;j<ps.length;j++){
-
-      const dx=ps[i].x-ps[j].x;
-      const dy=ps[i].y-ps[j].y;
-      const d=Math.hypot(dx,dy);
-
-      if(d < MAX){
-
-        const t = d / MAX;
-
-        const ca = hexRGB(ps[i].color());
-        const cb = hexRGB(ps[j].color());
-
-        const mid = lerpRGB(ca, cb, 0.5);
-
-        // softer lines
-        const alpha = (1 - t) * 0.12;
-
-        ctx.beginPath();
-        ctx.moveTo(ps[i].x, ps[i].y);
-        ctx.lineTo(ps[j].x, ps[j].y);
-
-        ctx.strokeStyle = `rgba(${mid[0]},${mid[1]},${mid[2]},${alpha})`;
-        ctx.lineWidth = 0.6;
-        ctx.stroke();
+      // mouse lines — bright white-tinted connection
+      if(mx!==null){
+        const dx=ps[i].x-mx, dy=ps[i].y-my, d=Math.hypot(dx,dy);
+        if(d<160){
+          const rgb=hexRGB(ps[i].color());
+          const a=(1-d/160)*0.5;
+          ctx.beginPath();
+          ctx.moveTo(ps[i].x,ps[i].y);
+          ctx.lineTo(mx,my);
+          ctx.strokeStyle=`rgba(${rgb[0]},${rgb[1]},${rgb[2]},${a})`;
+          ctx.lineWidth=1.1;
+          ctx.stroke();
+        }
       }
     }
   }
-}
 
   function loop(){
     ctx.clearRect(0,0,W,H);
     ps.forEach(p=>{ p.update(); p.draw(); });
-ctx.fillStyle = "rgba(0,0,0,0.15)";
-ctx.fillRect(0,0,W,H);    drawLines();
+    drawLines();
     requestAnimationFrame(loop);
   }
   loop();
