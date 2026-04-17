@@ -1033,22 +1033,45 @@ class P {
     return getCols()[this.colorIdx];
   }
 
-  update(){
-    const t = Date.now() * 0.0003;
+update(){
+  const t = Date.now() * 0.0003;
 
-    // floating motion
-    this.vx += Math.sin(t + this.y * 0.01) * 0.002;
-    this.vy += Math.cos(t + this.x * 0.01) * 0.002;
+  // subtle floating motion
+  this.vx += Math.sin(t + this.y * 0.01) * 0.002;
+  this.vy += Math.cos(t + this.x * 0.01) * 0.002;
 
-    this.vx *= 0.98;
-    this.vy *= 0.98;
+  // ✅ MOUSE INTERACTION (depth aware)
+  if(mx !== null){
+    const dx = mx - this.x;
+    const dy = my - this.y;
+    const d  = Math.hypot(dx, dy);
 
-    this.x += this.vx;
-    this.y += this.vy;
+  if(d < 160 && d > 0.001){
 
-    if(this.x<0||this.x>W) this.vx*=-1;
-    if(this.y<0||this.y>H) this.vy*=-1;
+  const force = (160 - d) / 160;
+
+  // depth-based strength
+  const strength = force * (this.depth * 1.2 + 0.2);
+
+  // repel when very close, attract otherwise
+  const dir = d < 40 ? -1 : 1;
+
+  this.vx += (dx / d) * strength * 0.4 * dir;
+  this.vy += (dy / d) * strength * 0.4 * dir;
+}
   }
+
+  // damping (important for smoothness)
+  this.vx *= 0.98;
+  this.vy *= 0.98;
+
+  this.x += this.vx;
+  this.y += this.vy;
+
+  // bounds
+  if(this.x < 0 || this.x > W) this.vx *= -1;
+  if(this.y < 0 || this.y > H) this.vy *= -1;
+}
 
   draw(){
     const rgb = hexRGB(this.color());
