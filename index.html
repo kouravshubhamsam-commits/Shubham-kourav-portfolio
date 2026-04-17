@@ -1008,20 +1008,33 @@ const N = window.innerWidth < 768 ? 30 : 60;
       this.a  = Math.random()*.55+.2;
     }
     color(){ return getCols()[this.colorIdx]; }
-    update(){
-      if(mx!==null){
-        const dx=mx-this.x, dy=my-this.y, d=Math.hypot(dx,dy);
-        if(d<180&&d>6){
-          const f=(180-d)/180 * .55; // more reactive
-          this.vx+=(dx/d)*f*.4;
-          this.vy+=(dy/d)*f*.4;
-        }
-      }
-      this.vx*=.984; this.vy*=.984;
-      this.x+=this.vx; this.y+=this.vy;
-      if(this.x<0||this.x>W) this.vx*=-1;
-      if(this.y<0||this.y>H) this.vy*=-1;
+update(){
+  const t = Date.now() * 0.0003; // time factor
+
+  // subtle wave motion (natural float)
+  this.vx += Math.sin(t + this.y * 0.01) * 0.002;
+  this.vy += Math.cos(t + this.x * 0.01) * 0.002;
+
+  // existing mouse interaction
+  if(mx!==null){
+    const dx=mx-this.x, dy=my-this.y, d=Math.hypot(dx,dy);
+    if(d<180&&d>6){
+      const f=(180-d)/180 * .55;
+      this.vx+=(dx/d)*f*.4;
+      this.vy+=(dy/d)*f*.4;
     }
+  }
+
+  // smooth damping (important)
+  this.vx*=.98;
+  this.vy*=.98;
+
+  this.x+=this.vx;
+  this.y+=this.vy;
+
+  if(this.x<0||this.x>W) this.vx*=-1;
+  if(this.y<0||this.y>H) this.vy*=-1;
+}
     draw(){
       const rgb = hexRGB(this.color());
       ctx.beginPath();
